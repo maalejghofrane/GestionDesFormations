@@ -1,0 +1,26 @@
+<div class="pos">
+  <button class=" btn btn-secondary"><a class="btnA" href="http://localhost:4200/createDomaine">Ajouter un domaine de formation</a></button>
+</div>
+  <table style="text-align: center;" *ngIf="isLoggedIn" class="table table-striped ">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Libelle</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let domaine of domaines">
+  <tr>
+    <th scope="row">{{domaine.id}}</th>
+    <td>{{domaine.libelle}}</td>
+    <td>
+      <button (click)="updateNavigateDomaine(domaine.id,domaine.libelle)" type="submit" class="btn btn-secondary">
+        Modifier
+      </button>
+      &nbsp;&nbsp;&nbsp;
+      <button [value]="domaine.id" (click)="deleteDomaine(domaine.id)" type="submit" class="btn btn-secondary">Supprimer
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

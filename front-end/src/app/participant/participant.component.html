@@ -1,0 +1,128 @@
+<!-- <div> -->
+<div id="main-container">
+
+</div>
+<br>
+<div style="text-align: right;">
+<button type="button" style="background-color:#6c757d;" class="btn btn-secandary" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+  Ajouter une participant
+</button>
+</div>
+<br><br>
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Email</th>
+      <th>Tel</th>
+      <th>Type</th>
+      <th>Pays</th>
+      <th>Organisme</th>
+      <th>Profil</th>
+      <!--   <th scope="col" *ngIf="showAdminBoard" >Modifier </th>
+             <th scope="col" *ngIf="showAdminBoard" >Supprimer</th>      -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let participant of participants">
+      <td>{{participant?.id}}</td>
+      <td>{{participant?.nom}}</td>
+      <td>{{participant?.prenom}}</td>
+      <td>{{participant?.email}}</td>
+      <td>{{participant?.tel}}</td>
+      <td>{{participant?.type}}</td>
+      <td>{{participant?.pays.nom}}</td>
+      <td>{{participant?.organisme.libelle}}</td>
+      <td>{{participant?.profils.libelle}}</td>
+      <td>
+        <button  type="submit" class="btn btn-secondary">
+          Modifier
+        </button>
+        <button class="btn btn-secondary" type="submit">
+          Supprimer
+        </button>
+      </td>    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!--
+  Modal -->
+<div class="modal fade" id="exampleModal" style="z-index: 999999999;" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Ajouter un participant</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <form #addForm="ngForm" (ngSubmit)="onAddParticipant(addForm)">
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom" required>
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prenom</label>
+            <input type="text" ngModel name="prenom" class="form-control" id="prenom" placeholder="prenom" required>
+          </div>
+
+          <div class="form-group">
+            <label for="organisme">Organisme</label>
+            <select [ngModel]="organismes" name="organisme" id="organisme" class="form-select"
+                    aria-label="Default select example">
+              <option [ngValue]="organisme" *ngFor="let organisme of organismes" value="{{organisme?.id}}">
+                {{organisme?.libelle}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="profils">Profil</label>
+            <select [ngModel]="profils" name="profils" id="profils" class="form-select"
+                    aria-label="Default select example">
+              <option [ngValue]="pr" *ngFor="let pr of profils" value="{{pr?.id}}">
+                {{pr?.libelle }}</option>
+            </select>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="pays">Pays</label>
+            <select [ngModel]="pays" name="pays" id="pays" class="form-select"
+                    aria-label="Default select example">
+              <option [ngValue]="ps" *ngFor="let ps of pays" value="{{ps?.id}}">
+                {{ps?.nom}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" ngModel name="email" class="form-control" id="email" placeholder="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="tel">Tel</label>
+            <input type="number" ngModel name="tel" class="form-control" id="tel" placeholder="tel" required>
+          </div>
+          <div class="form-group">
+
+            <label for="type">Type</label>
+            <input type="text" ngModel name="type" class="form-control" id="type" placeholder="type" required>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" id="add-pays-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary"
+                    style="background-color:#1077c3;">Save changes</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--fin modal-->

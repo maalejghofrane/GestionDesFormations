@@ -1,0 +1,33 @@
+<nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Gestion des foramtions</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="http://localhost:4200/">Home</a>
+      <a *ngIf="isAdmin" class="nav-item nav-link" href="http://localhost:4200/domaines">Domaine</a>
+      <a *ngIf="isAdmin" class="nav-item nav-link" href="http://localhost:4200/pays">Pays</a>
+      <a *ngIf="isAdmin" class="nav-item nav-link" href="http://localhost:4200/profils">Profils</a>
+      <a *ngIf="isAdmin" class="nav-item nav-link" href="http://localhost:4200/organismes">Organismes</a>
+      <a *ngIf="isAdmin" class="nav-item nav-link" href="http://localhost:4200/users">Users</a>
+      <a *ngIf="!isAdmin" class="nav-item nav-link" href="http://localhost:4200/createFormateur">Formateurs</a>
+      <a *ngIf="!isAdmin" class="nav-item nav-link" href="http://localhost:4200/participants">Participants</a>
+      <a *ngIf="!isAdmin" class="nav-item nav-link" href="http://localhost:4200/formations">Formations</a>
+      <a *ngIf="!isAdmin" class="nav-item nav-link" href="http://localhost:4200/sessionFormation">Sessions de formations</a>
+      <a *ngIf="!isAdmin" class="nav-item nav-link" href="http://localhost:4200/">Participants de sessions</a>
+      <a *ngIf="isLoggedIn" class="nav-item nav-link" href="http://localhost:4200/myuser"><img
+        src="../assets/user.png">{{user}}</a>
+      <button
+        *ngIf="isLoggedIn"
+        class="btn"
+        (click)="logout()"
+        type="submit"
+      ><img
+        src="../assets/logout.png"> Logout
+      </button>
+
+    </div>
+  </div>
+</nav>

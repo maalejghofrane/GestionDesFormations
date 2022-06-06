@@ -1,0 +1,28 @@
+
+<br><br>
+<div style="text-align: center" class="top container">
+  <div class="row">
+    <div class="col" style="background-color:#f8f9fa">
+      <h2>Modifier domaine </h2>
+      <form
+      [formGroup]="registerForm"
+      (ngSubmit)="registerForm.valid && registerSubmited()"
+    >
+      <div>
+        <label for="id">id</label>
+        <input readonly="readonly" [(ngModel)]="domaines.id" [value]="domaines.id" type="text" class="form-control" id="id" aria-describedby="emailHelp"
+               placeholder="Enter id"
+               formControlName="id">
+      </div>
+      <div>
+        <label for="libelle">libelle</label>
+        <input [(ngModel)]="domaines.libelle" [value]="domaines.libelle" type="text" class="form-control" id="libelle" placeholder="libelle"
+               formControlName="libelle">
+      </div>
+      <div>
+        <button type="submit" class="btn btn-secondary">Modifier</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>

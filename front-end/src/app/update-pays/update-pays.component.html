@@ -1,0 +1,39 @@
+<br>
+<br>
+<div style="text-align: center" class="top container">
+  <div class="row">
+    <div class="col" style="background-color:#f8f9fa">
+      <h2>Modifier un pays </h2>
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="registerForm.valid && registerSubmited()"
+      >
+        <div>
+          <label for="id">id</label>
+          <input readonly="readonly" [(ngModel)]="pays.id" [value]="pays.id" type="text" class="form-control" id="id"
+                 aria-describedby="emailHelp"
+                 placeholder="Enter id"
+                 formControlName="id">
+        </div>
+        <div>
+          <label for="nom">nom</label>
+          <input [(ngModel)]="pays.nom" [value]="pays.nom" type="text" class="form-control" id="nom"
+                 placeholder="Saisir le nom du pays"
+                 formControlName="nom">
+        </div>
+        <div>
+          <button type="submit" class="btn btn-secondary">Modifier</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

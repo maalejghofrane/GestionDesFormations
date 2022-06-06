@@ -1,0 +1,120 @@
+<br>
+<div id="main-container">
+</div>
+<div style="text-align: right !important;">
+  <button style="background-color:#6c757d;" class="btn" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+    Ajouter une session de formation
+  </button>
+</div>
+<br><br>
+<!--
+  Modal -->
+<div class="modal fade" id="exampleModal" style="z-index: 999999999;" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Ajouter une session de formation</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddSessionFormation(addForm)">
+
+
+          <div class="form-group">
+            <label for="organisme">Tittre de formation</label>
+            <select  [ngModel]="formateurs" name="formation" id="formation" class="form-select"
+                     aria-label="Default select example">
+
+              <option [ngValue]="formations" *ngFor="let formation of formations" value="{{formation?.id}}">
+                {{formation?.titre}}</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="prenom">Date de début</label>
+            <input type="date" ngModel name="prenom" class="form-control" id="prenom" placeholder="date début" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="email">Date de fin</label>
+            <input type="date" ngModel name="email" class="form-control" id="email" placeholder="date fin" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="tel">nombre de participant</label>
+            <input type="number" ngModel name="tel" class="form-control" id="tel" placeholder="Nombre de participant" required>
+          </div>
+
+          <div class="form-group">
+            <label for="organisme">Organisme</label>
+            <select  [ngModel]="organismes" name="organisme" id="organisme" class="form-select"
+                     aria-label="Default select example">
+
+              <option [ngValue]="organisme" *ngFor="let organisme of organismes" value="{{organisme?.id}}">
+                {{organisme?.libelle}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="organisme">Formateur</label>
+            <select  [ngModel]="formateurs" name="formateur" id="formatuer" class="form-select"
+                     aria-label="Default select example">
+
+              <option [ngValue]="formateurs" *ngFor="let formateur of formateurs" value="{{formateur?.id}}">
+                {{formateur?.nom}}</option>
+            </select>
+          </div>
+          <br>
+          <div class="modal-footer">
+            <button type="button" id="add-pays-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary"
+                    style="background-color:#1077c3;">Save changes
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<table style="text-align: center;" class="table table-striped ">
+  <p></p>
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Formation</th>
+    <th scope="col">Date début</th>
+    <th scope="col">Date fin</th>
+    <th scope="col">nombre participant</th>
+    <th scope="col">Lieu</th>
+    <th scope="col">Nom du formateur</th>
+    <th scope="col">Organisme</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody *ngFor="let session of sessionsFormations">
+  <tr>
+    <th scope="row">{{session.id}}</th>
+    <td>{{session.formation.titre}}</td>
+    <td>{{session.date_debut}}</td>
+    <td>{{session.date_fin}}</td>
+    <td>{{session.nb_participant}}</td>
+    <td>{{session.lieu}}</td>
+    <td>{{session.formateur.nom}}</td>
+    <td>{{session.organisme.libelle}}</td>
+    <td>
+      <button (click)="updateNavigateFormateur(session)" type="submit" class="btn btn-secondary">
+        Modifier
+      </button>
+      <button class="btn btn-secondary" (click)="onDeleteSessionformation(session.id)" type="submit">
+        Supprimer
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,60 @@
+<!--<form-->
+<!--  [formGroup]="registerForm"-->
+<!--  (ngSubmit)="registerForm.valid && registerSubmited()"-->
+<!--&gt;-->
+<!--  <div>-->
+<!--    <label for="id">id</label>-->
+<!--    <input type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Enter id"-->
+<!--           formControlName="id">-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <label for="libelle">libelle</label>-->
+<!--    <input type="text" class="form-control" id="libelle" placeholder="libelle" formControlName="libelle">-->
+<!--  </div>-->
+<!--  <div>-->
+<!--    <button type="submit" class="btn btn-primary">Submit</button>-->
+<!--  </div>-->
+<!--</form>-->
+<!--<div *ngFor="let domaine of domaines">-->
+<!--  <h1>{{domaine.id}}</h1>-->
+<!--  <h1>{{domaine.libelle}}</h1>-->
+<!--</div>-->
+
+<table style="text-align: center;" *ngIf="isLoggedIn" class="table table-striped ">
+  <p></p>
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Email</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Prenom</th>
+    <th scope="col">Tel</th>
+    <th scope="col">Organisme</th>
+    <th scope="col">Type</th>
+    <th></th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody *ngFor="let formateur of formateurs">
+  <tr>
+    <th scope="row">{{formateur.id}}</th>
+    <td>{{formateur.email}}</td>
+    <td>{{formateur.nom}}</td>
+    <td>{{formateur.prenom}}</td>
+    <td>{{formateur.tel}}</td>
+    <td>{{formateur.type}}</td>
+    <td>{{formateur.organisme.libelle}}</td>
+    <!--    <td>-->
+    <!--      <button (click)="updateNavigateDomaine(domaine.id,domaine.libelle)" type="submit" class="btn btn-secondary">-->
+    <!--        Modifier-->
+    <!--      </button>-->
+    <!--      <button [value]="domaine.id" (click)="deleteDomaine(domaine.id)" type="submit" class="btn btn-secondary">Supprimer-->
+    <!--      </button>-->
+    <!--      <a href="http://localhost:4200/createDomaine"><img style="width:40px" src="assets/add.png"></a>-->
+    <!--    </td>-->
+  </tr>
+  </tbody>
+</table>
+
+

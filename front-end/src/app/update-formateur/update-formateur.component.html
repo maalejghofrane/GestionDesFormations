@@ -1,0 +1,80 @@
+<!-- Edit Modal -->
+<div tabindex="-1" role="dialog" aria-labelledby="employeeEditModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="updateEmployeeModalLabel">Modifier Formateur : {{formateursU.nom}}</h2>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="updateForm"
+              (ngSubmit)="updateForm.valid && updateSubmited()">
+          <label for="nom">Nom</label>
+          <input [value]="formateursU.nom" type="text" [ngModel]="formateursU.nom" name="nomu" class="form-control"
+                 id="nom"
+                 formControlName="nom"
+                 aria-describedby="emailHelp" placeholder="Saisir le nom">
+          <label for="prenom">Prenom </label>
+          <input [value]="formateursU.prenom" type="text"
+                 [ngModel]="formateursU.prenom"
+                 formControlName="prenom"
+                 name="prenom" class="form-control" id="prenom"
+                 placeholder="Prenom">
+          <label for="email">Email </label>
+          <input [value]="formateursU.email" type="email"
+                 [ngModel]="formateursU.prenom" name="email"
+                 formControlName="email"
+                 class="form-control" id="email"
+                 placeholder="Prenom">
+          <div>
+            <label> Type de formateur</label>
+            <select [value]="formateursU.type"
+                    formControlName="type"
+                    name="typeu" id="typeu" class="form-select"
+                    aria-label="Default select example">
+              <option value="nationnal">
+                NATIONNAL
+              </option>
+              <option value="internationnal">
+                INTERNATIONNAL
+              </option>
+            </select>
+          </div>
+          <label for="tel">Tel</label>
+          <input [value]="formateursU.tel"
+                 formControlName="tel"
+                 [ngModel]="formateursU.tel" type="text" ngModel name="tel"
+                 class="form-control" id="tel" placeholder="tel" required>
+
+<!--            <label for="organisme">Organisme</label>-->
+<!--            <select >-->
+<!--              <option [ngValue]="organisme" *ngFor="let organisme of organismes" value="{{organisme?.id}} id={{organisme.id}}">-->
+<!--                {{organisme?.libelle}}</option>-->
+<!--            </select>-->
+
+          <P></P>
+          <label for="organismee">Organisme</label>
+          <select
+            [ngModel]="formateursU.organisme"
+          name="organisme"
+          id="organismee"
+          class="form-select"
+          formControlName="organisme">
+            <option *ngFor="let organisme of organismes"
+                    [value]="organisme.libelle"
+                      id="{{organisme.id}}">
+              {{ organisme.libelle }}
+            </option>
+          </select>
+          <div class="modal-footer">
+            <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+            <button data-dismiss="modal" class="btn btn-primary">Save
+              changes
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fin Modal -->

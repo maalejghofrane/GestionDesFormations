@@ -1,0 +1,28 @@
+<div class="pos">
+  <button class=" btn btn-secondary"><a class="btnA" href="http://localhost:4200/createProfil">Ajouter un Profil </a></button>
+</div>
+<table style="text-align: center;" *ngIf="isLoggedIn" class="table table-striped ">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Libelle</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+
+  <tbody *ngFor="let prof of profils">
+  <tr>
+    <th scope="row">{{prof.id}}</th>
+    <td>{{prof.libelle}}</td>
+    <td>
+      <button (click)="updateNavigateDomaine(prof.id,prof.libelle)" type="submit" class="btn btn-secondary">
+        Modifier
+      </button>
+      &nbsp;&nbsp;&nbsp;
+
+      <button [value]="prof.id" (click)="deleteDomaine(prof.id)" type="submit" class="btn btn-secondary">Supprimer
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

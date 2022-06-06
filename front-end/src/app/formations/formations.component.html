@@ -1,0 +1,97 @@
+<br>
+<div id="main-container">
+</div>
+<div style="text-align: right !important;">
+  <button style="background-color:#6c757d;" class="btn" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+    Ajouter une formation
+  </button>
+</div>
+<br><br>
+<!--
+  Modal -->
+<div class="modal fade" id="exampleModal" style="z-index: 999999999;" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Ajouter une formation</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddFormation(addForm)">
+          <div class="form-group">
+            <label for="nom">Titre</label>
+            <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="Titre" required>
+          </div>
+          <div class="form-group">
+            <label for="prenom">Annee</label>
+            <input type="text" ngModel name="prenom" class="form-control" id="prenom" placeholder="Annee" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Budget</label>
+            <input type="text" ngModel name="email" class="form-control" id="email" placeholder="Budget" required>
+          </div>
+
+          <div class="form-group">
+            <label for="tel">Type de formation</label>
+            <input type="text" ngModel name="tel" class="form-control" id="tel" placeholder="Type de formation" required>
+          </div>
+          <div class="form-group">
+            <label for="organisme">Domaine</label>
+            <select [ngModel]="domaines" name="organisme" id="organisme" class="form-select"
+                    aria-label="Default select example">
+
+              <option [ngValue]="domaine" *ngFor="let domaine of domaines" value="{{domaine?.id}}">
+                {{domaine?.libelle}}</option>
+            </select>
+          </div>
+          <br>
+          <div class="modal-footer">
+            <button type="button" id="add-pays-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary"
+                    style="background-color:#1077c3;">Save changes
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<table style="text-align: center;" class="table table-striped ">
+  <p></p>
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Titre</th>
+    <th scope="col">Annee</th>
+    <th scope="col">Budget</th>
+    <th scope="col">Duree</th>
+    <th scope="col">Domaine</th>
+    <th scope="col">Type de formation</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody *ngFor="let formation of formations">
+  <tr>
+    <th scope="row">{{formation.id}}</th>
+    <td>{{formation.titre}}</td>
+    <td>{{formation.annee}}</td>
+    <td>{{formation.budget}}</td>
+    <td>{{formation.duree}}</td>
+    <td>{{formation.domaine.libelle}}</td>
+    <td>{{formation.type_formation}}</td>
+    <td>
+      <button (click)="updateNavigateFormation(formation)" type="submit" class="btn btn-secondary">
+        Modifier
+      </button>
+      <button class="btn btn-secondary" (click)="onDeleteFormation(formation.id)" type="submit">
+        Supprimer
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

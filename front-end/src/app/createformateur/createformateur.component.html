@@ -1,0 +1,108 @@
+<br>
+  <div id="main-container">
+</div>
+<div style="text-align: right !important;">
+  <button style="background-color:#6c757d;" class="btn" data-bs-toggle="modal"
+          data-bs-target="#exampleModal">
+    Ajouter une formateur
+  </button>
+</div>
+<br><br>
+<!--
+  Modal -->
+<div class="modal fade" id="exampleModal" style="z-index: 999999999;" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Ajouter un formateur</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddFormateur(addForm)">
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" ngModel name="nom" class="form-control" id="nom" placeholder="nom" required>
+          </div>
+          <div class="form-group">
+            <label for="prenom">Prenom</label>
+            <input type="text" ngModel name="prenom" class="form-control" id="prenom" placeholder="prenom" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" ngModel name="email" class="form-control" id="email" placeholder="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select ngModel name="type" id="type" class="form-select" aria-label="Default select example">
+              <option value="nationnal">
+                NATIONNAL
+              </option>
+              <option value="internationnal">
+                INTERNATIONNAL
+              </option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="tel">Tel</label>
+            <input type="number" ngModel name="tel" class="form-control" id="tel" placeholder="tel" required>
+          </div>
+          <div class="form-group">
+            <label for="organisme">Organisme</label>
+            <select  [ngModel]="organismes" name="organisme" id="organisme" class="form-select"
+                    aria-label="Default select example">
+
+              <option [ngValue]="organisme" *ngFor="let organisme of organismes" value="{{organisme?.id}}">
+                {{organisme?.libelle}}</option>
+            </select>
+          </div>
+          <br>
+          <div class="modal-footer">
+            <button type="button" id="add-pays-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary"
+                    style="background-color:#1077c3;">Save changes
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+<table style="text-align: center;" class="table table-striped ">
+  <p></p>
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Email</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Prenom</th>
+    <th scope="col">Tel</th>
+    <th scope="col">Organisme</th>
+    <th scope="col">Type</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+
+  <tbody *ngFor="let formateur of formateurs">
+  <tr>
+    <th scope="row">{{formateur.id}}</th>
+    <td>{{formateur.email}}</td>
+    <td>{{formateur.nom}}</td>
+    <td>{{formateur.prenom}}</td>
+    <td>{{formateur.tel}}</td>
+    <td>{{formateur.organisme.libelle}}</td>
+    <td>{{formateur.type}}</td>
+    <td>
+      <button (click)="updateNavigateFormateur(formateur)" type="submit" class="btn btn-secondary">
+        Modifier
+      </button>
+      <button class="btn btn-secondary" (click)="onDeleteFormateur(formateur.id)" type="submit">
+        Supprimer
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

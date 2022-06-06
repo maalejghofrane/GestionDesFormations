@@ -1,0 +1,49 @@
+<div style="text-align: center" class="top container">
+  <div class="row">
+    <div class="col" style="background-color:#f8f9fa">
+      <h1>Ajouter un participant</h1>
+      <form>
+        <div style="text-align: left">
+
+          <label>Organisme</label>
+          <select id="organisme" formControlName="country" class="form-select">
+            <option [ngValue]="null" disabled>Choissir un organisme</option>
+            <option *ngFor="let organisme of organismes" [ngValue]="organisme.id">{{organisme.libelle}}</option>
+            -->
+          </select>
+          <label>Pays</label>
+          <select id="pays" formControlName="pays" class="form-select">
+            <option [ngValue]="null" disabled>Choissir un pays</option>
+            <option *ngFor="let ps of pays" [ngValue]="ps.id">{{ps.nom}}</option>
+          </select>
+          <label>Profil</label>
+          <select id="profils" formControlName="profils" class="form-select">
+            <option [ngValue]="null" disabled>Choissir un profil</option>
+            <option *ngFor="let profil of profils" [ngValue]="profil.id">{{profil.t}}</option>
+            -->
+          </select>
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom"
+                 placeholder="Saisir le nom" formControlName="nom">
+
+          <label for="prenom">Prenom</label>
+          <input type="text" class="form-control" id="prenom"
+                 placeholder="Saisir le prenom" formControlName="prenom">
+
+          <label for="tel">Tel</label>
+          <input type="text" class="form-control" id="tel"
+                 placeholder="Saisir le tel" formControlName="tel">
+
+          <label>Type de formation</label>
+          <select class="form-select" formControlName="country">
+            <option>Choissir le type de formateur</option>
+            <option>Nationnal</option>
+            <option>Internationnal</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary" type="submit">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>

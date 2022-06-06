@@ -1,0 +1,26 @@
+<div class="pos">
+  <button class=" btn btn-secondary"><a class="btnA" href="http://localhost:4200/createOrganisme">Ajouter un organisme</a></button>
+</div>
+<table style="text-align: center;" *ngIf="isLoggedIn" class="table table-striped ">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Libelle</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+
+  <tbody *ngFor="let organisme of organismes">
+  <tr>
+    <th scope="row">{{organisme.id}}</th>
+    <td>{{organisme.libelle}}</td>
+    <td>
+      <button (click)="updateNavigateDomaine(organisme.id,organisme.libelle)" type="submit" class="btn btn-secondary">
+        Modifier
+      </button>
+      <button [value]="organisme.id" (click)="deleteDomaine(organisme.id)" type="submit" class="btn btn-secondary">Supprimer
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

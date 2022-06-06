@@ -1,0 +1,24 @@
+<br>
+<br>
+<div style="text-align: center" class="top container">
+  <div class="row">
+    <div class="col" style="background-color:#f8f9fa">
+      <h2>Ajouter un pays </h2>
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="registerForm.valid && registerSubmited()"
+      >
+
+        <div>
+          <label for="nom">nom</label>
+          <input [(ngModel)]="pays.nom" type="text" class="form-control" id="nom" placeholder="Nom du pays"
+                 formControlName="nom">
+        </div>
+        <div style="text-align: right !important;"
+             class="top">
+          <button type="submit" class="btn btn-secondary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

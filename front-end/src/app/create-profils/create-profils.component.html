@@ -1,0 +1,29 @@
+<br>
+<br>
+<br>
+<div style="text-align: center" class="top container">
+  <div class="row">
+    <div class="col" style="background-color:#f8f9fa">
+      <h2>Ajouter un profil </h2>
+      <form
+        [formGroup]="registerForm"
+        (ngSubmit)="registerForm.valid && registerSubmited()"
+      >
+        <!--  <div>-->
+        <!--    <label for="id">id</label>-->
+        <!--    <input  [(ngModel)]="domaines.id" type="text" class="form-control" id="id" aria-describedby="emailHelp" placeholder="Enter id"-->
+        <!--           formControlName="id">-->
+        <!--  </div>-->
+        <div style="text-align: left">
+          <label for="libelle">Libelle</label>
+          <input [(ngModel)]="profils.libelle" type="text" class="form-control" id="libelle"
+                 placeholder="Saisir le libelle" formControlName="libelle">
+        </div>
+        <div style="text-align: right !important;"
+             class="top">
+          <button type="submit" class="btn btn-secondary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

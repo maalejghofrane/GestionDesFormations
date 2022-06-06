@@ -1,0 +1,13 @@
+.btnA
+{
+  text-decoration:none;
+  font : bold 18px Arial, Helvetica, sans-serif;
+  color:white ;
+}
+
+.pos{
+  text-align:right ;
+  margin-top: 20px;
+  margin-right:30px ;
+
+}

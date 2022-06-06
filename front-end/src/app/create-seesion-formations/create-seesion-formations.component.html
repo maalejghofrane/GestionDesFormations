@@ -1,0 +1,43 @@
+<div style="text-align: center" class="top container">
+  <div class="row">
+    <div class="col" style="background-color:#f8f9fa">
+      <h1>Ajouter une session de formation</h1>
+      <form>
+        <div style="text-align: left">
+          <label>Organisme</label>
+          <select id="organisme" formControlName="country" class="form-select">
+            <option [ngValue]="null" disabled>Choissir un organisme</option>
+            <option *ngFor="let organisme of organismes" [ngValue]="organisme.id">{{organisme.libelle}}</option>
+            -->
+          </select>
+          <label>Choissir une formation</label>
+          <select id="formation" formControlName="formation" class="form-select">
+            <option [ngValue]="null" disabled>Choissir une formation</option>
+            <option *ngFor="let formation of formations" [ngValue]="formation.id">{{formation.titre }}</option>
+            -->
+          </select>
+          <label for="nom">Nom</label>
+          <input type="text" class="form-control" id="nom"
+                 placeholder="Saisir le nom" formControlName="nom">
+
+          <label for="prenom">Prenom</label>
+          <input type="text" class="form-control" id="prenom"
+                 placeholder="Saisir le prenom" formControlName="prenom">
+
+          <label for="tel">Tel</label>
+          <input type="text" class="form-control" id="tel"
+                 placeholder="Saisir le tel" formControlName="tel">
+
+          <label>Type de formation</label>
+          <select class="form-select" formControlName="country">
+            <option>Choissir le type de formateur</option>
+            <option>Nationnal</option>
+            <option>Internationnal</option>
+          </select>
+        </div>
+        <button style="text-align: right !important; " class="btn btn-secondary" type="submit">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>

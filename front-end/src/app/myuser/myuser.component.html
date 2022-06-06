@@ -1,0 +1,29 @@
+<div style="background-image: url('/assets/computer.jpg')">
+  <br><br><br>
+<div class="login-form">
+  <div style="background-color: #f2f2f2;">
+    <br>
+    <div class="" style="text-align: center;">
+      <img  src="../assets/myuser.png"/>
+      <br>
+      <p class="p" style="text-align: center;">
+        {{user}}
+      </p>
+    </div>
+    <div>
+    </div>
+    <div class="content">
+      <div class="input-field">
+        <h3> ID:{{id}}</h3>
+        <h3> Email : {{email}}</h3>
+        <h3> Role : {{roles}}</h3>
+        <h2 class="alert alert-success" *ngIf="isLoggedIn">
+          Logged in as {{ roles }}.
+        </h2>
+      </div>
+    </div>
+  </div>
+</div>
+  <br><br>
+
+</div>

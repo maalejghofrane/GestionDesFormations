@@ -1,0 +1,25 @@
+<div class="pos">
+  <button class=" btn btn-secondary"><a class="btnA" href="http://localhost:4200/createPays">Ajouter un pays</a></button>
+</div>
+<table style="text-align: center;" *ngIf="isLoggedIn" class="table table-striped ">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Nom</th>
+    <th scope="col">actions</th>
+  </tr>
+  </thead>
+
+  <tbody *ngFor="let ps of pays">
+  <tr>
+    <th scope="row">{{ps.id}}</th>
+    <td>{{ps.nom}}</td>
+    <td>
+      <button  (click)="updateNavigatePays(ps.id,ps.libelle)" type="submit" class="btn btn-secondary">Modifier</button>
+      &nbsp;&nbsp;&nbsp;
+      <button [value]="ps.id" (click)="deletePays(ps.id)" type="submit" class="btn btn-secondary">Supprimer
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>
